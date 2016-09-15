@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.WinRTPlatformProvider">
+            <summary>
+            Platform-specific implementation of <see cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider"/>.
+            </summary>    
+        </member>
+        <member name="M:Solid.Practices.Composition.WinRTPlatformProvider.GetFiles(System.String)">
+            <summary>
+            Gets the files at the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.WinRTPlatformProvider.GetFiles(System.String,System.String)">
+            <summary>
+            Gets the files at the specified path, using provided search pattern.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.WinRTPlatformProvider.GetRootPath">
+            <summary>
+            Gets the root path.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,645 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Mvvm.Commanding.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.ActionCommand">
+            <summary>
+            Command implementation which allows custom notifications, composite execution predicates, etc.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.#ctor(System.Action)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.#ctor(System.Action,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="canExecuteHandler">The can execute handler.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.#ctor(System.Action,System.Func{System.Boolean},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="canExecuteHandler">The can execute handler.</param>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.OnCanExecute">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.OnExecute">
+            <summary>
+            Override to inject custom logic during execution.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.When(System.Func{System.Boolean})">
+            <summary>
+            Specifies the condition that must be satisfied for command execution
+            </summary>
+            <param name="condition">Condition to be satisfied</param>
+            <returns>Command condition</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand.Do(System.Action)">
+            <summary>
+            Specifies the action to be run on command execution
+            </summary>
+            <param name="execute">Action to be run</param>
+            <returns>Extended command</returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions">
+            <summary>
+            Extension methods for <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/>
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnPropertyChanged``1(``0,System.ComponentModel.INotifyPropertyChanged)">
+            <summary>
+            Queries for command state according to the property notifications
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="notifiable">Source of property notifications</param>
+            <returns>Command after setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnPropertyChanged``1(``0,System.Object,System.String)">
+            <summary>
+            Queries for command state according to the specified property notifications
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="source">Source of property notifications</param>
+            <param name="path">Property path</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnPropertyChanged``1(``0,System.ComponentModel.INotifyPropertyChanged,System.Linq.Expressions.Expression{System.Func{System.Object}})">
+            <summary>
+            Queries for command state according to the specified property notifications by expression
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="notifiable">Source of property notifications</param>
+            <param name="propertySelector">Property selector expression</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnCommandCanExecuteChanged``1(``0,System.Windows.Input.ICommand)">
+            <summary>
+            Queries for command state according to another command state
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="relatedCommand">Related command</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnCommandExecuted``1(``0,LogoFX.Client.Mvvm.Commanding.IActionCommand)">
+            <summary>
+            Queries for command state according to another command execution
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="relatedCommand">Related command</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryWhenExecuted``1(``0)">
+            <summary>
+            Queries for command state according to its execution
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.RequeryOnCollectionChanged``1(``0,System.Collections.Specialized.INotifyCollectionChanged)">
+            <summary>
+            Queries for command state according to the collection notifications
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="collection">Source of collection notifications</param>
+            <returns>Command after setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.WithImage``1(``0,System.Uri)">
+            <summary>
+            Sets image of the command
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="image">Image Uri</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.WithName``1(``0,System.String)">
+            <summary>
+            Sets name of the command
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="name">Name</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommandExtensions.WithDescription``1(``0,System.String)">
+            <summary>
+            Sets description of the command
+            </summary>
+            <typeparam name="T">Type of command</typeparam>
+            <param name="command">Command</param>
+            <param name="description">Description</param>
+            <returns>Command after the setup</returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.ActionCommand`1">
+            <summary>
+            Generic implementation of <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand"/>
+            </summary>
+            <typeparam name="T">Type of command parameter</typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand`1"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.#ctor(System.Action{`0},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand`1"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand`1"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="canExecuteHandler">The can execute handler.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.ActionCommand`1"/> class.
+            </summary>
+            <param name="executeHandler">The execute handler.</param>
+            <param name="canExecuteHandler">The can execute handler.</param>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.OnCanExecute(`0)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <returns></returns>
+            <param name="parameter">The parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.OnExecute(`0)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.When(System.Func{`0,System.Boolean})">
+            <summary>
+            Specifies the condition that must be satisfied for command execution
+            </summary>
+            <param name="condition">Condition to be satisfied</param>
+            <returns>Command condition</returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ActionCommand`1.Do(System.Action{`0})">
+            <summary>
+            Specifies the action to be run on command execution
+            </summary>
+            <param name="execute">Action to be run</param>
+            <returns>Extended command</returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.CommandBase">
+            <summary>
+            Base class for ICommand implementations
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.CommandBase"/> class.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.CommandBase"/> class.
+            </summary>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.CanExecute">
+            <summary>
+            Returns <c>true</c> if the command can be executed; <c>false</c> otherwise.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.Execute">
+            <summary>
+            Executes the command.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.Execute(System.Object)">
+            <summary>
+            Executes the command with the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.OnCanExecute">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.OnExecute">
+            <summary>
+            Override to inject custom logic during execution.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.OnCanExecute(System.Object)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <returns></returns>
+            <param name="parameter">The parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase.OnExecute(System.Object)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.CommandBase`1">
+            <summary>
+            Base class for <see cref="T:LogoFX.Client.Mvvm.Commanding.IActionCommand"/> with parameter implementations
+            </summary>
+            <typeparam name="T">Type of command parameter</typeparam>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.CommandBase`1.ERROR_EXPECTED_TYPE">
+            <summary>
+            The error message for invalid parameter type.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.CommandBase`1"/> class.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.CommandBase`1"/> class.
+            </summary>
+            <param name="isActive">if set to <c>true</c> [is active].</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.CanExecute(`0)">
+            <summary>
+            Returns <c>true</c> if the command can be executed; <c>false</c> otherwise.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.Execute(`0)">
+            <summary>
+            Executes the command with the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.OnRequeryCanExecute">
+            <summary>
+            Override to inject custom logic during execution condition re-evaluation.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.OnCanExecute(`0)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <returns></returns>
+            <param name="parameter">The parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.OnExecute(`0)">
+            <summary>
+            Override to inject custom logic during execution condition evaluation.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.CommandBase`1.IsActive">
+            <summary>
+            Gets or sets a value indicating whether this instance is active.
+            </summary>
+            <value>
+              <c>true</c> if this instance is active; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.RequeryCanExecute">
+            <summary>
+            Re-evaluates the can execute value.
+            </summary>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.Commanding.CommandBase`1.CommandExecuted">
+            <summary>
+            Occurs when the <see cref="T:System.Windows.Input.ICommand">ICommand</see> is executed.
+            </summary>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.Commanding.CommandBase`1.System#Windows#Input#ICommand#CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether the command should execute.
+            </summary>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.Commanding.CommandBase`1.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.NotifyPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Notifies about the property change.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="propertySelector">The property selector.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.OnCommandExecuted(LogoFX.Client.Mvvm.Commanding.CommandEventArgs)">
+            <summary>
+            Raises the <see cref="E:CommandExecuted" /> event.
+            </summary>
+            <param name="args">The <see cref="T:LogoFX.Client.Mvvm.Commanding.CommandEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.ParseParameter(System.Object,System.Type)">
+            <summary>
+            Parses command parameter to the specified type.
+            </summary>
+            <param name="parameter"></param>
+            <param name="parseAsType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.CommandBase`1.CheckParameterType(System.Object)">
+            <summary>
+            Checks the type of the parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.CommandBase`1.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.CommandBase`1.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.CommandBase`1.ImageUri">
+            <summary>
+            Gets the image URI.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.CommandBase`1.IsAdvanced">
+            <summary>
+            Gets a value indicating whether this instance is advanced.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is advanced; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.Condition">
+            <summary>
+            Represents command with condition.
+            </summary>    
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.Condition.#ctor(System.Func{System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.Condition"/> class.
+            </summary>
+            <param name="canExecute">The can execute.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.Condition.Do(System.Action)">
+            <summary>
+            Associates the specified action with the command execution.
+            </summary>
+            <param name="execute">The action to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.Condition`1">
+            <summary>
+            Represents command with condition.
+            </summary>
+            <typeparam name="T"></typeparam>    
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.Condition`1.#ctor(System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.Commanding.Condition`1"/> class.
+            </summary>
+            <param name="canExecute">The can execute.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.Condition`1.Do(System.Action{`0})">
+            <summary>
+            Associates the specified action with the command execution.
+            </summary>
+            <param name="execute">The action to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction">
+            <summary>
+            Executes the attached command
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.CommandProperty">
+            <summary>
+            The command property
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.Command">
+            <summary>
+            Gets or sets the command.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.ParameterProperty">
+            <summary>
+            The parameter property
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.Parameter">
+            <summary>
+            Gets or sets the parameter.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.TriggerParameterConverterProperty">
+            <summary>
+            The trigger parameter converter property
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.TriggerParameterConverter">
+            <summary>
+            Gets or sets the trigger parameter converter.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.UseTriggerParameterProperty">
+            <summary>
+            The use trigger parameter property
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.UseTriggerParameter">
+            <summary>
+            Gets or sets a value indicating whether to use trigger parameter.
+            </summary>
+            <value>
+              <c>true</c> if trigger parameter is used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.ManageEnableState">
+            <summary>
+            Gets or sets a value indicating whether the enable state should be managed.
+            </summary>
+            <value>
+              <c>true</c> if enable state should be managed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.OnAttached">
+            <summary>
+            Called after the action is attached to an AssociatedObject.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.OnDetaching">
+            <summary>
+            Called when the action is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteCommandAction.Invoke(System.Object)">
+            <summary>
+            Invokes the specified argument.
+            </summary>
+            <param name="arg">The argument.</param>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction">
+            <summary>
+            Provides way to call some named command with notion of visal tree routing
+            Will search for propety of type <see cref="T:System.Windows.Input.ICommand"/> with name />
+            </summary>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.Detaching">
+            <summary>
+            Occurs before the message detaches from the associated object.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.UseTriggerParameterProperty">
+            <summary>
+            The use trigger parameter dependency property.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.UseTriggerParameter">
+            <summary>
+            Gets or sets a value indicating whether to use trigger parameter.
+            </summary>
+            <value>
+              <c>true</c> if trigger parameter is used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.CommandProperty">
+            <summary>
+            The command dependency property.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.Command">
+            <summary>
+            Gets or sets the attached command.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.CommandNameProperty">
+            <summary>
+            Represents the method name of an action message.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.CommandName">
+            <summary>
+            Gets or sets the name of the command to be invoked on the presentation model class.
+            </summary>
+            <value>The name of the method.</value>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.ParameterProperty">
+            <summary>
+            Represents the parameters of an action message.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.Parameter">
+            <summary>
+            Gets the parameters to pass as part of the method invocation.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.TriggerParameterConverterProperty">
+            <summary>
+            The trigger parameter converter dependency property.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.TriggerParameterConverter">
+            <summary>
+            Gets or sets the trigger parameter converter.
+            </summary>
+            <value>
+            The trigger parameter converter.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.ManageEnableState">
+            <summary>
+            Gets or sets a value indicating whether enable state is managed.
+            </summary>
+            <value>
+              <c>true</c> if enable state is managed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.UpdateAvailability">
+            <summary>
+            Forces an update of the UI's Enabled/Disabled state based on the the preconditions associated with the method.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.ApplyAvailabilityEffect">
+            <summary>
+            Applies an availability effect, such as IsEnabled, to an element.
+            </summary>
+            <remarks>Returns a value indicating whether or not the action is available.</remarks>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.SetPropertyBinding">
+            <summary>
+            Sets the target, method and view on the context. Uses a bubbling strategy by default.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.OnAttached">
+            <summary>
+            Called after the action is attached to an AssociatedObject.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.OnDetaching">
+            <summary>
+            Called when the action is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.Invoke(System.Object)">
+            <summary>
+            Invokes the specified argument.
+            </summary>
+            <param name="arg">The argument.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.Commanding.ExecuteNamedCommandAction.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+    </members>
+</doc>
