@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Bootstrapping</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions">
+            <summary>
+            Represents various settings for bootstrapper creation.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.UseApplication">
+            <summary>
+            Gets or sets a value indicating whether the real application is used.
+            The default value is <c>true</c>. Use <c>false</c> for tests.
+            </summary>
+            <value>
+              <c>true</c> if the real application is used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.ReuseCompositionInformation">
+            <summary>
+            Gets or sets a value indicating whether the composition information is re-used. Use <c>true</c>
+            when running lots of integration client-side tests.
+            The default value is <c>true</c>.
+            </summary>
+            <value>
+            <c>true</c> if the composition information is re-used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.DiscoverCompositionModules">
+            <summary>
+            Gets or sets a value indicating whether the bootstrapper 
+            should look for composition modules.
+            The default value is <c>true</c>.
+            </summary>
+            <value>
+            <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.InspectAssemblies">
+            <summary>
+            Gets or sets a value indicating whether the bootstrapper
+            should look for potential application-component assemblies.
+            The default value is <c>true</c>.
+            </summary>
+            <value>
+              <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.UseDefaultMiddlewares">
+            <summary>
+            Gets or sets a value indicating whether the default middlewares
+            are used. The default value is <c>true</c>
+            </summary>
+            <value>
+              <c>true</c> if the default middlewares are used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.DisplayRootView">
+            <summary>
+            Gets or sets a value indicating whether the root view is displayed upon
+            successful initialization. This value is used only when there is a root object.
+            </summary>
+            <value>
+              <c>true</c> if the root view is displayed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperCreationOptions.ExcludedTypes">
+            <summary>
+            Gets or sets the types to be excluded from the registration.
+            </summary>
+            <value>
+            The type of the root object.
+            </value>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.ContainerRegistratorExtensions">
+            <summary>
+            The ioc container registrator extension methods.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.ContainerRegistratorExtensions.RegisterViewModels(Solid.Practices.IoC.IIocContainerRegistrator,System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the view models.
+            </summary>
+            <param name="iocContainerRegistrator">The ioc container registrator.</param>
+            <param name="assemblies">The assemblies.</param>
+            <param name="excludedTypes">The types to be excluded from the registration.</param>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware">
+            <summary>
+            Registers automagically the application's view models in the transient lifestyle.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware.#ctor(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware"/> class.
+            </summary>
+            <param name="excludedTypes">The type of the root object.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithContainerRegistrator)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware`1">
+            <summary>
+            Registers automagically the application's view models in the transient lifestyle.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware`1.#ctor(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware"/> class.
+            </summary>
+            <param name="excludedTypes">The type of the root object.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterViewModelsMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

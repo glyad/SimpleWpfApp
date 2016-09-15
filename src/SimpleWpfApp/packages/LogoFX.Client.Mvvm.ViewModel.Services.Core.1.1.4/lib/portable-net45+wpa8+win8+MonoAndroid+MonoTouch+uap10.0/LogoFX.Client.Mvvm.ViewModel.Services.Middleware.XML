@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Mvvm.ViewModel.Services.Middleware</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.BootstrapperContainerExtensions">
+            <summary>
+            Bootstrapper extensions.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.BootstrapperContainerExtensions.UseViewModelCreatorService``1(``0)">
+            <summary>
+            Uses the view model creator service middleware.
+            </summary>
+            <param name="bootstrapperContainer">The bootstrapper container.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.BootstrapperContainerExtensions.UseShutdown``1(``0)">
+            <summary>
+            Uses the shutdown middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper container.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.RegisterViewModelCreatorServiceMiddleware`1">
+            <summary>
+            Middleware that's responsible for registering <see cref="T:LogoFX.Client.Mvvm.ViewModel.Services.IViewModelCreatorService"/> into the ioc container registrator.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.RegisterViewModelCreatorServiceMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.ShutdownMiddleware`1">
+            <summary>
+            Middleware that's responsible for registering 
+            <see cref="T:LogoFX.Client.Mvvm.ViewModel.Services.IShutdownService"/> into the ioc container registrator.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.ShutdownMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns/>
+        </member>
+    </members>
+</doc>

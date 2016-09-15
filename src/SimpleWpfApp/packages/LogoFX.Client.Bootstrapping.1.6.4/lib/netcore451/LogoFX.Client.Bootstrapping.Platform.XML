@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Bootstrapping.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperBase">
+            <summary>
+            Base bootstrapper, responsible for modules composition.
+            </summary>    
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionModulesProvider" />
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.GetInstance(System.Type,System.String)">
+            <summary>
+            Gets the service by its type and optional <see cref="T:System.String"/> key.
+            Not intended to be used explicitly from code.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.GetAllInstances(System.Type)">
+            <summary>
+            Gets all instances of service by its type.
+            Not intended to be used explicitly from code.
+            </summary>
+            <param name="service">The service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.BuildUp(System.Object)">
+            <summary>
+            Injects all missing properties from the IoC containerAdapter into the provided object.
+            Not intended to be used explicitly from code.
+            </summary>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperBase.ModulesPath">
+            <summary>
+            Gets the path of composition modules that will be discovered during bootstrapper configuration.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperBase.Prefixes">
+            <summary>
+            Gets the prefixes of the modules that will be used by the module registrator
+            during bootstrapper configuration. Use this to implement efficient discovery.
+            </summary>
+            <value>
+            The prefixes.
+            </value>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperBase.Modules">
+            <summary>
+            Gets the list of modules that were discovered during bootstrapper configuration.
+            </summary>
+            <value>
+            The list of modules.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.#ctor">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperBase"/> 
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.#ctor(LogoFX.Client.Bootstrapping.BootstrapperCreationOptions)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperBase"/> 
+            </summary>
+            <param name="creationOptions">The creation options.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.Configure">
+            <summary>
+            Override to configure the framework and setup your IoC container.
+            </summary>
+        </member>
+        <member name="E:LogoFX.Client.Bootstrapping.BootstrapperBase.InitializationCompleted">
+            <summary>
+            Occurs when initialization is completed and the application starts.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.RaiseInitializationCompleted">
+            <summary>
+            Raises the initialization completed.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.SelectAssemblies">
+            <summary>
+            Override to tell the framework where to find assemblies to inspect for application components.
+            </summary>
+            <returns>
+            A list of assemblies to inspect.
+            </returns>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperBase.Assemblies">
+            <summary>
+            Gets the assemblies that will be inspected for the application components.
+            </summary>
+            <value>
+            The assemblies.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.OnConfigureAssemblyResolution">
+            <summary>
+            Override this to provide custom assembly namespaces collection.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperBase.Use(Solid.Practices.Middleware.IMiddleware{LogoFX.Bootstrapping.IBootstrapper})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.InitializeViewLocatorMiddleware">
+            <summary>
+            Initializes view locator.
+            </summary>    
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.InitializeViewLocatorMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapper)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2">
+            <summary>
+            Application bootstrapper with ioc container and its adapter.
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.WithRootObject`1">
+            <summary>
+            Application bootstrapper with ioc container, its adapter and root object.
+            </summary>
+            <typeparam name="TRootObject"></typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.WithRootObject`1.#ctor(`1,System.Func{`1,`0})">
+            <summary>
+            Initializes a new instance of <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.WithRootObject`1"/>
+            </summary>
+            <param name="iocContainer">The ioc container.</param>
+            <param name="adapterCreator">The adapter creation function.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.WithRootObject`1.#ctor(`1,System.Func{`1,`0},LogoFX.Client.Bootstrapping.BootstrapperCreationOptions)">
+            <summary>
+            Initializes a new instance of <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.WithRootObject`1"/>
+            </summary>
+            <param name="iocContainer">The ioc container.</param>
+            <param name="adapterCreator">The adapter creation function.</param>
+            <param name="creationOptions">The bootstrapper creation options.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.#ctor(`1,System.Func{`1,`0})">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2"/> class.
+            </summary>
+            <param name="iocContainer">The ioc container.</param>
+            <param name="adapterCreator">The adapter creator function.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.#ctor(`1,System.Func{`1,`0},LogoFX.Client.Bootstrapping.BootstrapperCreationOptions)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2"/> class.
+            </summary>
+            <param name="iocContainer">The ioc container.</param>
+            <param name="adapterCreator">The adapter creator function.</param>
+            <param name="creationOptions">The bootstrapper creation options.</param>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.Container">
+            <summary>
+            Gets the container.
+            </summary>
+            <value>
+            The container.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.OnConfigure(Solid.Practices.IoC.IIocContainerRegistrator)">
+            <summary>
+            Override this method to inject custom logic during bootstrapper configuration.
+            </summary>
+            <param name="containerRegistrator">IoC container adapter</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`2.Use(Solid.Practices.Middleware.IMiddleware{LogoFX.Bootstrapping.IBootstrapperWithContainer{`0,`1}})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1">
+            <summary>
+            Application bootstrapper with ioc container adapter. 
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.WithRootObject`1">
+            <summary>
+            Application bootstrapper with ioc container adapter and root object.
+            </summary>
+            <typeparam name="TRootObject"></typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.WithRootObject`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.WithRootObject`1"/>
+            </summary>
+            <param name="iocContainerAdapter">The ioc container adapter.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.WithRootObject`1.#ctor(`0,LogoFX.Client.Bootstrapping.BootstrapperCreationOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.WithRootObject`1"/> class.
+            </summary>
+            <param name="iocContainerAdapter">The ioc container adapter.</param>
+            <param name="creationOptions">The creation options.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1"/> class.
+            </summary>
+            <param name="iocContainerAdapter">The ioc container adapter.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.#ctor(`0,LogoFX.Client.Bootstrapping.BootstrapperCreationOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1"/> class.
+            </summary>
+            <param name="iocContainerAdapter">The ioc container adapter.</param>
+            <param name="creationOptions">The creation options.</param>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.ContainerAdapter">
+            <summary>
+            Gets the container adapter.
+            </summary>
+            <value>
+            The container adapter.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.BeforeOnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+            Override this method to inject custom functionality before the app is launched.
+            </summary>
+            <param name="e">The <see cref="T:Windows.ApplicationModel.Activation.LaunchActivatedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.CheckLaunchActivationArguments(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+            Override this method to inject custom launch activation arguments checking logic.
+            </summary>
+            <param name="e">The <see cref="T:Windows.ApplicationModel.Activation.LaunchActivatedEventArgs"/> instance containing the event data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <param name="e">Details about the launch request and process.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+             Invoked when application execution is being suspended.  Application state is saved
+             without knowing whether the application will be terminated or resumed with the contents
+             of memory still intact.
+             </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.Configure">
+            <summary>
+            Configures the framework and executes boiler-plate registrations.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.OnConfigure(Solid.Practices.IoC.IIocContainerRegistrator)">
+            <summary>
+            Override this method to inject custom logic during bootstrapper configuration.
+            </summary>
+            <param name="containerRegistrator">The ioc container registrator.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.InitializeDispatcher">
+            <summary>
+            Initializes the framework dispatcher.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.Registrator">
+            <summary>
+            Gets the registrator.
+            </summary>
+            <value>
+            The registrator.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.Use(Solid.Practices.Middleware.IMiddleware{LogoFX.Bootstrapping.IBootstrapperWithContainerRegistrator})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.Use(Solid.Practices.Middleware.IMiddleware{LogoFX.Bootstrapping.IBootstrapperWithContainerAdapter{`0}})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1.Use(Solid.Practices.Middleware.IMiddleware{LogoFX.Client.Bootstrapping.BootstrapperContainerBase{`0}})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.RegisterPlatformSpecificMiddleware">
+            <summary>
+            Registers platform-specific services into the ioc container.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterPlatformSpecificMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithContainerRegistrator)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.CreateRootObjectMiddleware`1">
+            <summary>
+            Registers root object into the ioc container adapter and 
+            optionally displays it when the application starts.
+            </summary>
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.CreateRootObjectMiddleware`1.#ctor(System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Bootstrapping.CreateRootObjectMiddleware`1"/> class.
+            </summary>
+            <param name="rootObjectType">Type of the root object.</param>
+            <param name="displayView">if set to <c>true</c> the root view is displayed.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.CreateRootObjectMiddleware`1.Apply(LogoFX.Client.Bootstrapping.BootstrapperContainerBase{`0})">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.RegisterContainerAdapterMiddleware`1">
+            <summary>
+            Registers the ioc container adapter.
+            </summary>
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterContainerAdapterMiddleware`1.Apply(LogoFX.Client.Bootstrapping.BootstrapperContainerBase{`0})">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.RegisterResolverMiddleware`1">
+            <summary>
+            Registers the ioc container resolver.
+            </summary>
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.RegisterResolverMiddleware`1.Apply(LogoFX.Client.Bootstrapping.BootstrapperContainerBase{`0})">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1">
+            <summary>
+            The builder enables creating bootstrapper instances using Fluent API.
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.CreateBuilder(`0)">
+            <summary>
+            Creates a new instance of the builder.
+            </summary>
+            <param name="container">Container adapter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.UseApplication(System.Boolean)">
+            <summary>
+            Sets a value indicating whether the real application is used.
+            </summary>
+            <param name="useApplication"><c>true</c> if the real application is used; otherwise, <c>false</c>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.ReuseCompositionInformation(System.Boolean)">
+            <summary>
+            Sets a value indicating whether the composition information is re-used. 
+            Use <c>true</c>
+            when running lots of integration client-side tests.
+            </summary>
+            <param name="reuseCompositionInformation">
+            <c>true</c> if the composition information is re-used; otherwise, <c>false</c>.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.InspectAssemblies(System.Boolean)">
+            <summary>
+            Gets or sets a value indicating whether the bootstrapper
+            should look for potential application-component assemblies.
+            </summary>
+            <param name="inspectAssemblies">
+            <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.DiscoverCompositionModules(System.Boolean)">
+            <summary>
+            Gets or sets a value indicating whether the bootstrapper 
+            should look for instances of <see cref="T:Solid.Practices.Modularity.ICompositionModule"/>.
+            </summary>
+            <param name="discoverCompositionModules">
+            <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.UseDefaultMiddlewares(System.Boolean)">
+            <summary>
+            Gets or sets a value indicating whether the default middlewares
+            are used.
+            </summary>       
+            <param name="useDefaultMiddlewares">
+            <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperContainerBuilder`1.Build">
+            <summary>
+            Builds a new instance of <see cref="T:LogoFX.Client.Bootstrapping.BootstrapperContainerBase`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Client.Bootstrapping.BootstrapperExtensions">
+            <summary>
+            Bootstrapper extension methods.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperExtensions.UseRootObject``1(LogoFX.Client.Bootstrapping.BootstrapperContainerBase{``0},System.Type,System.Boolean)">
+            <summary>
+            Uses the root object creation middleware.
+            </summary>
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <param name="rootObjectType">The type of the root object.</param>
+            <param name="displayView">if set to <c>true</c> view is displayed.</param>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.BootstrapperExtensions.UseResolver``1(LogoFX.Client.Bootstrapping.BootstrapperContainerBase{``0})">
+            <summary>
+            Uses the resolver registration middleware.
+            </summary>
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <param name="bootstrapper">The bootstrapper.</param>        
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Mvvm.ViewModel</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.ObservableViewModelsCollection`1">
+            <summary>
+            ObservableViewModelsCollection
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.SelectionChangedEventArgs`1">
+            <summary>
+            Selection notification event args.
+            </summary>
+            <typeparam name="T">Type of selected items.</typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.SelectionChangedEventArgs`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Client.Mvvm.ViewModel.SelectionChangedEventArgs`1"/> class.
+            </summary>
+            <param name="selection">The selection.</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.SelectionChangedEventArgs`1.Selection">
+            <summary>
+            Gets the selection.
+            </summary>
+            <value>The selection.</value>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.SelectionMode">
+            <summary>
+            Selection mode.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.ViewModel.SelectionMode.Passive">
+            <summary>
+            Passive mode.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.ViewModel.SelectionMode.One">
+            <summary>
+            Single mode.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.ViewModel.SelectionMode.ZeroOrOne">
+            <summary>
+            Single or no selection mode.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.ViewModel.SelectionMode.OneOrMore">
+            <summary>
+            At least one item mode.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Mvvm.ViewModel.SelectionMode.ZeroOrMore">
+            <summary>
+            Any number of items mode.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.IReadModelsSelection`1">
+            <summary>
+            Represents an object with read-only selection properties.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.Services.IReadModelsSelection`1.Selection">
+            <summary>
+            Gets the selection.
+            </summary>
+            <value>
+            The selection.
+            </value>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.ViewModel.Services.IReadModelsSelection`1.SelectionChanged">
+            <summary>
+            Occurs when selection is changed.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.IWriteModelsSelection`1">
+            <summary>
+            Represents an object which enables changing selection.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.IWriteModelsSelection`1.UpdateSelection(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates the selection.
+            </summary>
+            <param name="newSelection">The new selection.</param>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.Services.ModelsSelection`1">
+            <summary>
+            Represents models selection.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.Services.ModelsSelection`1.Selection">
+            <summary>
+            Gets the selection.
+            </summary>
+            <value>
+            The selection.
+            </value>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.ViewModel.Services.ModelsSelection`1.SelectionChanged">
+            <summary>
+            Occurs when selection is changed.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.Services.ModelsSelection`1.UpdateSelection(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Updates the selection.
+            </summary>
+            <param name="newSelection">The new selection.</param>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.ViewModelBase">
+            <summary>
+            Base class for <c>ViewModels</c>.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsEnabled">
+            <summary>
+            <c>IsEnabled</c> property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnIsEnabledChangedOverride(System.Boolean,System.Boolean)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsEnabled"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.DisplayName">
+            <summary>
+            Gets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsExpanded">
+            <summary>
+            IsExpanded property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnIsExpandedChangedOverride(System.Boolean,System.Boolean)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsExpanded"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsCurrent">
+            <summary>
+            IsCurrent property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnIsCurrentChangedOverride(System.Boolean,System.Boolean)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsCurrent"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsSelected">
+            <summary>
+            IsSelected property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnIsSelectedChangedOverride(System.Boolean,System.Boolean)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsSelected"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.LastError">
+            <summary>
+            LastError property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnLastErrorChangedOverride(System.String,System.String)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.LastError"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsBusy">
+            <summary>
+            IsBusy property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnIsBusyChangedOverride(System.Boolean,System.Boolean)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.IsBusy"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.Parent">
+            <summary>
+            Parent property
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.OnParentChangedOverride(LogoFX.Client.Mvvm.ViewModel.Contracts.IViewModel,LogoFX.Client.Mvvm.ViewModel.Contracts.IViewModel)">
+            <summary>
+            Called when <see cref="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.Parent"/> changed
+            </summary>
+            <param name="newValue">New Value</param>
+            <param name="oldValue">Old Value</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.GetErrors(System.String)">
+            <summary>
+            Gets the errors for property.
+            </summary>
+            <param name="propertyName">Name of the property to check.</param>
+            <returns></returns>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.HasErrors">
+            <summary>
+            Gets a value indicating whether this instance has errors.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has errors; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.ClearErrorFromProperty``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Clears the error from property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">The expression that designates the property.</param>
+        </member>
+        <member name="M:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.AddErrorForProperty``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+            <summary>
+            Adds the error for property.
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="expression">The expression that designates the property.</param>
+            <param name="error">The error description.</param>
+        </member>
+        <member name="E:LogoFX.Client.Mvvm.ViewModel.ViewModelBase.ErrorsChanged">
+            <summary>
+            Occurs when the validation errors have changed for a property or for the entire entity. 
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Mvvm.ViewModel.ViewModelCollection">
+            <summary>
+            Represents view models collection.
+            </summary>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelCollection.Item(System.String)">
+            <summary>
+            Gets view model by the specified type name.
+            </summary>
+            <param name="type">The specified type name.</param>
+        </member>
+        <member name="P:LogoFX.Client.Mvvm.ViewModel.ViewModelCollection.Item(System.Type)">
+            <summary>
+            Gets the <see cref="T:LogoFX.Client.Mvvm.ViewModel.ViewModelBase"/> with the specified type.
+            </summary>
+            <value>
+            The <see cref="T:LogoFX.Client.Mvvm.ViewModel.ViewModelBase"/>.
+            </value>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
